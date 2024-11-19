@@ -54,7 +54,7 @@ class HTTPClient(HTTPClientInterface):
                         raise e
 
             elif method.upper() == "POST":
-                async with client.post(url, **kwargs) as resp:
+                async with client.post(url, timeout=10, **kwargs) as resp:
                     try:
                         return await validate_json(resp, *args)
                     except FailedDecodeJson as e:
